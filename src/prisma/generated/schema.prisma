@@ -1,0 +1,83 @@
+// Prisma schema for WhatsApp Clone
+// User, Plan, Chat, Message, File
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  name            String
+  avatar          String? // URL to avatar image
+  status          String? // User status message
+  role            String    @default("standard") // standard, premium, admin
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  password        String // Hashed password for custom auth
+  // Relations
+  messages        Message[]
+  chats           Chat[]    @relation("UserChats")
+  plans           Plan[]
+  files           File[]
+  starredMessages Message[] @relation("StarredMessages")
+}
+
+model Plan {
+  id        String   @id @default(uuid())
+  name      String
+  price     Float
+  features  String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Relations
+  users     User[]
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  name      String?
+  isGroup   Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  // Relations
+  users     User[]    @relation("UserChats")
+  messages  Message[]
+  icon      String? // Group icon URL
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  content   String?
+  type      String // text, image, video, file
+  chatId    String
+  senderId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isRead    Boolean  @default(false)
+  starredBy User[]   @relation("StarredMessages")
+  // Relations
+  chat      Chat     @relation(fields: [chatId], references: [id])
+  sender    User     @relation(fields: [senderId], references: [id])
+  file      File?
+  fileId    String?  @unique
+}
+
+model File {
+  id         String   @id @default(uuid())
+  url        String // File storage URL
+  type       String // image, video, document, etc
+  name       String
+  size       Int
+  uploadedBy String
+  uploadedAt DateTime @default(now())
+  // Relations
+  user       User     @relation(fields: [uploadedBy], references: [id])
+  message    Message? @relation(fields: [id], references: [fileId])
+}
