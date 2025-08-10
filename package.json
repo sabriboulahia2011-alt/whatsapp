@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 0.0.0.0 --turbopack",
+    "dev": "next dev --hostname 0.0.0.0",
     "dev:all": "concurrently \"npx ts-node server.ts\" \"next dev --hostname 0.0.0.0 --turbopack\"",
     "build": "next build",
     "start": "next start",
