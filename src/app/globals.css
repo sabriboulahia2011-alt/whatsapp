@@ -172,8 +172,7 @@ html {
 
 /* Focus styles */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
-  @apply focus:ring-primary @reference;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
 }
 
 /* Message bubble animations */
