@@ -1,0 +1,47 @@
+
+> whatsapp-clone@1.0.0 install:run
+> npm install && npm run dev
+
+
+up to date, audited 730 packages in 2s
+
+269 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> whatsapp-clone@1.0.0 dev
+> next dev --hostname 0.0.0.0 --turbopack
+
+   ▲ Next.js 15.4.6 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://0.0.0.0:3000
+   - Experiments (use with caution):
+     · allowedDevOrigins
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'allowedDevOrigins' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 558ms
+ ✓ Ready in 1718ms
+ ○ Compiling / ...
+Error: Cannot apply unknown utility class `border-border`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [at onInvalidCandidate (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:18:1312)]
+    [at ge (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:13:29803)]
+    [at /home/runner/workspace/node_modules/tailwindcss/dist/lib.js:18:373]
+    [at I (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:3:1656)]
+    [at je (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:18:172)]
+    [at bi (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:35:780)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:105:5)]
+    [at async yi (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:35:1123)]
+    [at async _r (/home/runner/workspace/node_modules/@tailwindcss/node/dist/index.js:10:3384)]
+    [at async p (/home/runner/workspace/node_modules/@tailwindcss/postcss/dist/index.js:10:4019)]
+ ✓ Compiled / in 5.8s
+ GET / 307 in 6295ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1479ms
+ GET /login 200 in 1630ms
+^A ⚠ Cross origin request detected from a6734870-4c39-432e-8c7a-c32118b395e6-00-u47njygkgsis.sisko.replit.dev to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
