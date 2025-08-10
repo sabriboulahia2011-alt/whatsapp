@@ -67,9 +67,9 @@ const MessageInput: React.FC<MessageInputProps> = ({
   }, [value]);
 
   const attachmentOptions = [
-    { icon: Image, label: 'Photo', color: 'text-purple-600 bg-purple-50' },
-    { icon: Camera, label: 'Camera', color: 'text-blue-600 bg-blue-50' },
-    { icon: FileText, label: 'Document', color: 'text-green-600 bg-green-50' },
+    { icon: Image, label: 'Photo', color: 'text-purple-600 bg-purple-50 dark:bg-purple-900/20' },
+    { icon: Camera, label: 'Camera', color: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20' },
+    { icon: FileText, label: 'Document', color: 'text-green-600 bg-green-50 dark:bg-green-900/20' },
   ];
 
   return (
@@ -113,7 +113,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
                   setShowAttachments(false);
                   // Handle attachment type
                 }}
-                className={`flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all transform hover:scale-105 active:scale-95`}
+                className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all transform hover:scale-105 active:scale-95"
               >
                 <div className={`p-2 rounded-full ${option.color}`}>
                   <option.icon className="w-5 h-5" />
@@ -138,7 +138,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
             setShowAttachments(false);
           }}
           className={`flex-shrink-0 w-10 h-10 rounded-full transition-all hover:scale-110 active:scale-95 ${
-            showEmojiPicker ? 'bg-yellow-100 text-yellow-600' : 'text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700'
+            showEmojiPicker ? 'bg-yellow-100 text-yellow-600 dark:bg-yellow-900/20' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
           }`}
           disabled={disabled}
         >
@@ -154,7 +154,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
             setShowEmojiPicker(false);
           }}
           className={`flex-shrink-0 w-10 h-10 rounded-full transition-all hover:scale-110 active:scale-95 ${
-            showAttachments ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700'
+            showAttachments ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/20' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
           }`}
           disabled={disabled}
         >
@@ -171,11 +171,11 @@ const MessageInput: React.FC<MessageInputProps> = ({
             placeholder={placeholder}
             disabled={disabled}
             rows={1}
-            className="w-full resize-none rounded-full px-4 py-3 bg-gray-100 dark:bg-gray-700 border-0 focus:ring-2 focus:ring-green-500 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
+            className="w-full resize-none rounded-full px-4 py-3 bg-gray-100 dark:bg-gray-700 border-0 focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:bg-white dark:focus:bg-gray-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
             style={{ maxHeight: '120px', minHeight: '48px' }}
           />
           
-          {/* Send Button (appears when typing) */}
+          {/* Send Button */}
           {value.trim() && (
             <Button
               onClick={onSend}
@@ -188,13 +188,13 @@ const MessageInput: React.FC<MessageInputProps> = ({
           )}
         </div>
 
-        {/* Voice/Camera Buttons (when not typing) */}
+        {/* Voice/Camera Buttons */}
         {!value.trim() && (
           <div className="flex space-x-2 flex-shrink-0">
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all hover:scale-110 active:scale-95"
+              className="w-10 h-10 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all hover:scale-110 active:scale-95"
               disabled={disabled}
             >
               <Camera className="w-5 h-5" />
@@ -208,8 +208,8 @@ const MessageInput: React.FC<MessageInputProps> = ({
               onMouseLeave={() => setIsRecording(false)}
               className={`w-10 h-10 rounded-full transition-all hover:scale-110 active:scale-95 ${
                 isRecording 
-                  ? 'bg-red-100 text-red-600 scale-110' 
-                  : 'text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'bg-red-100 text-red-600 scale-110 dark:bg-red-900/20' 
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
               disabled={disabled}
             >
